@@ -8,7 +8,7 @@ aggregates:
 #-----> Create Storage Servers 
 SVMs: 
     - { svm_name: vserver_1, state: present, rootvol_aggregate: select_1_node_01_SSD_1, protocols: nfs, root_vol: root1 }
-    - { svm_name: vserver_2, state: present, rootvol_aggregate: select-1-node-02_SSD_1, protocols: nfs, root_vol: root2 }
+    - { svm_name: vserver_2, state: present, rootvol_aggregate: select-1-node_02_SSD_1, protocols: nfs, root_vol: root2 }
     
 
 #-----> Create Logical Interfaces (LIFs) 
@@ -23,8 +23,8 @@ Create_LIFS:
 
 #-----> Create Volumes
 Volumes:
-    - { Name: vol1, Size: 50, Which_SVM: vserver_1, aggregate_for_vol: Agg1 }
-    - { Name: vol2, Size: 50, Which_SVM: vserver_2, aggregate_for_vol: Agg2 }
+    - { Name: vol1, Size: 1, Which_SVM: vserver_1, aggregate_for_vol: Agg1 }
+    - { Name: vol2, Size: 1, Which_SVM: vserver_2, aggregate_for_vol: Agg2 }
     
 
 #-----> Mount Volumes to junction Path 
