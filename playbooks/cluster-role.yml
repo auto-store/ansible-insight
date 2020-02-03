@@ -1,0 +1,6 @@
+---
+- name: Deploy ONTAP Cluster config
+  hosts: localhost
+  roles:
+    - role: /etc/ansible/ansible-inight/roles/cluster
+
