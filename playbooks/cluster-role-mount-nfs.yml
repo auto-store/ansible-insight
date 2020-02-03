@@ -1,0 +1,10 @@
+---
+- name: Deploy ONTAP Cluster config
+  hosts: localhost
+  roles:
+    - role: /etc/ansible/ansible-inight/roles/cluster
+
+- name: Mount export to host
+  hosts: centos
+  roles:  
+    - role: /etc/ansible/ansible-inight/roles/mount_nfs

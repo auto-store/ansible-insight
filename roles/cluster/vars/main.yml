@@ -1,0 +1,42 @@
+#-----> Create Aggregate
+
+aggregates:
+    - { aggregate_name: select_1_node_01_SSD_1, state: online, nodes: select-1-node-01 }
+    - { aggregate_name: select_1_node_02_SSD_1, state: online, nodes: select-1-node-02 }
+  
+
+#-----> Create Storage Servers 
+SVMs: 
+    - { svm_name: vserver_1, state: present, rootvol_aggregate: select_1_node_01_SSD_1, protocols: nfs, root_vol: root1 }
+    - { svm_name: vserver_2, state: present, rootvol_aggregate: select-1-node-02_SSD_1, protocols: nfs, root_vol: root2 }
+    
+
+#-----> Create Logical Interfaces (LIFs) 
+Create_LIFS:
+    - { LIF_Name: nfs_1, LIF_State: present, LIF_IP: 10.67.8.248, LIF_Protocol: nfs, 
+        svm_lif: vserver_1, LIF_home_node: Select-4-Node-01, LIF_Role: data, firewall_policy: mgmt }
+    
+    - { LIF_Name: nfs_2, LIF_State: present, LIF_IP: 10.67.8.249, LIF_Protocol: nfs, 
+        svm_lif: vserver_2, LIF_home_node: Select-4-Node-02, LIF_Role: data, firewall_policy: mgmt } 
+
+
+
+#-----> Create Volumes
+Volumes:
+    - { Name: vol1, Size: 50, Which_SVM: vserver_1, aggregate_for_vol: Agg1 }
+    - { Name: vol2, Size: 50, Which_SVM: vserver_2, aggregate_for_vol: Agg2 }
+    
+
+#-----> Mount Volumes to junction Path 
+
+Junction_Mount:
+    - { volume: vol1, SVM: vserver_1, junction: /vol1 }
+    - { volume: vol2, SVM: vserver_2, junction: /vol2 }
+
+
+    
+#----> Vaulted Credentials 
+netapp_hostname: 10.67.8.221
+netapp_username: admin
+netapp_password: Netapp1!
+...

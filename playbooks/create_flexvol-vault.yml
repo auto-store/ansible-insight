@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  name: Create FlexVols
+  vars_files:
+    /etc/secrets/password.yml
+  tasks:
+  - name: create flexvol
+    na_ontap_volume:
+     state: present
+     name: vol1
+     is_infinite: False
+     aggregate_name: Agg1
+     size: 1
+     size_unit: gb      
+     vserver: vserver_1
+     hostname: "{{ hostname }}"
+     username: "{{ username }}" 
+     password: "{{ password }}"
+     https: true
+     validate_certs: false
+
+
+     

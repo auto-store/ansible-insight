@@ -1,0 +1,8 @@
+ - hosts: centos
+   tasks:
+   - name: install nfs
+     yum: pkg=nfs-utils state=latest
+    
+   - name: install python-pip
+     yum: pkg=python-pip state=absent
+    
