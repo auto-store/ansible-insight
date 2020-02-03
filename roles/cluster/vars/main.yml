@@ -8,7 +8,7 @@ aggregates:
 #-----> Create Storage Servers 
 SVMs: 
     - { svm_name: vserver_1, state: present, rootvol_aggregate: select_1_node_01_SSD_1, protocols: nfs, root_vol: root1 }
-    - { svm_name: vserver_2, state: present, rootvol_aggregate: select-1-node_02_SSD_1, protocols: nfs, root_vol: root2 }
+    - { svm_name: vserver_2, state: present, rootvol_aggregate: select_1_node_02_SSD_1, protocols: nfs, root_vol: root2 }
     
 
 #-----> Create Logical Interfaces (LIFs) 
