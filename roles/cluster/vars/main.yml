@@ -14,17 +14,17 @@ SVMs:
 #-----> Create Logical Interfaces (LIFs) 
 Create_LIFS:
     - { LIF_Name: nfs_1, LIF_State: present, LIF_IP: 10.67.8.248, LIF_Protocol: nfs, 
-        svm_lif: vserver_1, LIF_home_node: Select-4-Node-01, LIF_Role: data, firewall_policy: mgmt }
+        svm_lif: vserver_1, LIF_home_node: select-1-node-01, LIF_Role: data, firewall_policy: mgmt }
     
     - { LIF_Name: nfs_2, LIF_State: present, LIF_IP: 10.67.8.249, LIF_Protocol: nfs, 
-        svm_lif: vserver_2, LIF_home_node: Select-4-Node-02, LIF_Role: data, firewall_policy: mgmt } 
+        svm_lif: vserver_2, LIF_home_node: select-1-node-02, LIF_Role: data, firewall_policy: mgmt } 
 
 
 
 #-----> Create Volumes
 Volumes:
-    - { Name: vol1, Size: 1, Which_SVM: vserver_1, aggregate_for_vol: Agg1 }
-    - { Name: vol2, Size: 1, Which_SVM: vserver_2, aggregate_for_vol: Agg2 }
+    - { Name: vol1, Size: 1, Which_SVM: vserver_1, aggregate_for_vol: select_1_node_01_SSD_1 }
+    - { Name: vol2, Size: 1, Which_SVM: vserver_2, aggregate_for_vol: select_1_node_02_SSD_1 }
     
 
 #-----> Mount Volumes to junction Path 
