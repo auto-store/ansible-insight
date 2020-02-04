@@ -25,7 +25,7 @@ Create_LIFS:
 Volumes:
     - { Name: vol1, Size: 1, Which_SVM: vserver_1, aggregate_for_vol: select_1_node_01_SSD_1 }
     - { Name: vol2, Size: 1, Which_SVM: vserver_2, aggregate_for_vol: select_1_node_02_SSD_1 }
-    
+    - { Name: insight, Size: 1, Which_SVM: vserver_2, aggregate_for_vol: select_1_node_02_SSD_1 }
 
 #-----> Mount Volumes to junction Path 
 
